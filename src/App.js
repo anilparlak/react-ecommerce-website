@@ -1,24 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import Product from "./pages/Product";
+import HomePage from "./pages/HomePage";
+import ProductLists from "./pages/ProductLists";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
+import Cart from "./pages/Cart";
+
+import { Navigate } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route
+
+} from "react-router-dom";
+import Success from "./pages/Success";
+import { useSelector } from "react-redux";
+import UserInfo from "./pages/UserInfo";
+import Favorite from "./pages/Favorite";
+
 
 function App() {
+  const user = useSelector((state) => state.user.currentUser);
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter >
+      <Routes>
+        <Route path="/"  element={<HomePage/>} />
+        <Route path="/products" element={<ProductLists/>} />
+        <Route path="/products/:category" element={<ProductLists/>} />
+        <Route path="/product/:id" element={<Product/>} />
+        <Route path="/cart" element={<Cart/>} />
+        <Route path="/success" element={<Success/>} />
+        <Route path="/login" element={user ? <Navigate replace to="/"/> : <Login/> } /> 
+        <Route path="/register" element={<Register/>} />
+        <Route path="/update" element={<UserInfo/>} />
+        <Route path="/favorite" element={user ? <Favorite/> : <Navigate replace to="/"/>}/>
+       
+
+        
+        
+      </Routes>
+    </BrowserRouter>
   );
 }
 
