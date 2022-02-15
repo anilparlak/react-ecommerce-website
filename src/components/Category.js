@@ -1,12 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import {iPad, mobile} from '../responsive';
+import {iPad, mobile, mobileSm} from '../responsive';
 import {Link} from 'react-router-dom'
 const Container = styled.div`
     flex: 1;
     height: 70vh;
     position: relative;
     ${mobile({ width:"80vw", margin:"0 auto" })}
+    ${mobileSm({width:"100%"})}
 `
 const CategoryContent = styled.div`
     display: flex;

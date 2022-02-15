@@ -5,7 +5,7 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Cart from "./pages/Cart";
 
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import {
   BrowserRouter,
   Routes,
@@ -16,6 +16,8 @@ import Success from "./pages/Success";
 import { useSelector } from "react-redux";
 import UserInfo from "./pages/UserInfo";
 import Favorite from "./pages/Favorite";
+import ScrollToTop from "./ScrollToTop";
+
 
 
 function App() {
@@ -24,7 +26,9 @@ function App() {
 
   return (
     <BrowserRouter >
+    <ScrollToTop>
       <Routes>
+
         <Route path="/"  element={<HomePage/>} />
         <Route path="/products" element={<ProductLists/>} />
         <Route path="/products/:category" element={<ProductLists/>} />
@@ -35,11 +39,8 @@ function App() {
         <Route path="/register" element={<Register/>} />
         <Route path="/update" element={<UserInfo/>} />
         <Route path="/favorite" element={user ? <Favorite/> : <Navigate replace to="/"/>}/>
-       
-
-        
-        
       </Routes>
+      </ScrollToTop>
     </BrowserRouter>
   );
 }

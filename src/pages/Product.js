@@ -6,7 +6,7 @@ import Navbar from "../components/Navbar";
 import Newsletter from "../components/Newsletter";
 import Footer from "../components/Footer";
 import { Add, Remove } from "@material-ui/icons";
-import { mobile , iPad } from "../responsive";
+import { mobile , iPad, mobileSm } from "../responsive";
 import {useLocation} from "react-router-dom";
 import { api } from "../api";
 import { useDispatch } from "react-redux";
@@ -24,6 +24,8 @@ const ImgContainer = styled.div`
   flex: 1;
   overflow: hidden;
   cursor: pointer;
+  ${mobile({ display:"flex",justifyContent:"center"})}
+
 `;
 
 const Image = styled.img`
@@ -31,8 +33,9 @@ const Image = styled.img`
   height: 75vh;
   object-fit: cover;
   transition: all .6s ease-in;
-  ${mobile({ height: "40vh" })}
+  
   ${iPad({ height:"auto" })}
+  ${mobile({ height: "auto" , width:"200px" })}
 
   &:hover{
     transform: scale(1.2);
@@ -50,17 +53,21 @@ const InfoContainer = styled.div`
 
 const Title = styled.h1`
   font-weight: 600;
+  ${mobile({ textAlign:"center" })}
   
 `;
 
 const Desc = styled.p`
   padding: 20px 40px 20px 0;
   color: #3d3d3d;
+  ${mobile({ textAlign:"center" })}
 `;
 
 const Price = styled.span`
   font-weight: 100;
   font-size: 40px;
+  ${mobile({ display:"flex", justifyContent:"end"})}
+  ${mobileSm({ justifyContent:"center"})}
 `;
 
 const FilterContainer = styled.div`
@@ -68,13 +75,16 @@ const FilterContainer = styled.div`
   margin: 30px 0px;
   display: flex;
   justify-content: space-between;
-  ${mobile({ width: "100%" })}
+  
   ${iPad({ width: "100%" })}
+  ${mobile({ width: "100%" })}
+  ${mobileSm({ flexDirection:"column" , alignItems:"center" })}
 `;
 
 const Filter = styled.div`
   display: flex;
   align-items: center;
+  ${mobileSm({marginBottom:"15px"})}
 `;
 
 const FilterTitle = styled.span`
@@ -103,8 +113,10 @@ const AddContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  ${mobile({ width: "100%" })}
+  
   ${iPad({ width: "100%" })}
+  ${mobile({ width: "100%" })}
+  ${mobileSm({ alignItems:"center" })}
 `;
 
 const AmountContainer = styled.div`
@@ -132,6 +144,7 @@ const Button = styled.button`
   cursor: pointer;
   font-weight: 500;
   transition: all .4s ease;
+  ${mobileSm({marginTop:"15px"})}
  &:hover {
     background-color: #e53637;
   } 

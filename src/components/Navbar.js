@@ -6,7 +6,7 @@ import {
 } from "@material-ui/icons";
 import styled from "styled-components";
 import { Badge } from "@material-ui/core";
-import { mobile } from "../responsive";
+import { iPad, mobile } from "../responsive";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
@@ -30,6 +30,7 @@ const Center = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  ${iPad({flex:"2"})}
   ${mobile({ display: "none" })}
 `;
 const NavMenu = styled.ul`
@@ -85,7 +86,7 @@ const Right = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  ${mobile({ flex: "1", justifyContent: "center" })}
+  ${mobile({ flex: "1" })}
 `;
 const MenuItem = styled.div`
   font-size: 14px;

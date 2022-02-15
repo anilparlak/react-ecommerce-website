@@ -10,7 +10,7 @@ import {
 } from "@material-ui/icons";
 import React from "react";
 import styled from "styled-components";
-import {mobile, iPad} from '../responsive'
+import {mobile, iPad, mobileSm} from '../responsive'
 
 const Container = styled.div`
   width: 100%;
@@ -21,6 +21,7 @@ const Container = styled.div`
   flex-direction: column;
 
   ${mobile({ padding:"20px 20px 0 20px",height:"70vh" })}
+  ${mobileSm({height:"auto"})}
 `;
 const Top = styled.div`
   color: #fff;
@@ -168,14 +169,14 @@ const Footer = () => {
         <TopRight>
           <TopCenterTitle>Contact</TopCenterTitle>
           <ContactItem>
-            <Room style={{ marginRight: "10px" }} /> 622 Dixie Path , South
-            Tobinchester 98336
+            <Room style={{ marginRight: "10px" }} /> Istabul / Turkey
           </ContactItem>
           <ContactItem>
-            <Phone style={{ marginRight: "10px" }} /> +1 234 56 78
+            <Phone style={{ marginRight: "10px" }} /> +90 05xx xxx xx xx
           </ContactItem>
           <ContactItem>
-            <MailOutline style={{ marginRight: "10px" }} /> contact@lama.dev
+            <MailOutline style={{ marginRight: "10px" }} /> 
+            <a style={{color: "#b7b7b7" , textDecoration:"none"}} href="http://anilparlak.com/" rel="noreferrer" target="_blank">anilparlak.com</a>
           </ContactItem>
           <Payment src="https://i.ibb.co/Qfvn4z6/payment.png" />
         </TopRight>

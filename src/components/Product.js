@@ -133,9 +133,9 @@ const Product = ({ item }) => {
       <Image src={item.img} />
 
       <Info>
-        <Icon>
+        {/* <Icon>
           <ShoppingCartOutlined />
-        </Icon>
+        </Icon> */}
         <Icon>
           <Link
             style={{ textDecoration: "none", color: "#000" }}

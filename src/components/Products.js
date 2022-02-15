@@ -2,11 +2,14 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Product from "./Product";
 import { api } from "../api";
+import { mobileSm } from "../responsive";
 const Container = styled.div`
   padding: 40px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+
+  ${mobileSm({padding:"0"})}
 `;
 
 const Products = ({ filters, cat, sort }) => {

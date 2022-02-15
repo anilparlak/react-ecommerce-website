@@ -51,7 +51,7 @@ const TopButton = styled.button`
   &:hover {
     background-color: ${(props) => (props.type === "filled" ? "#e53637" : "")};
   }
-  ${mobile({ width: "100%" })}
+  ${mobile({ width: "100%" ,  margin:"5px 0" , maxWidth:"50%"})}
 `;
 
 const TopTexts = styled.div`
@@ -82,6 +82,8 @@ const Product = styled.div`
 const ProductDetail = styled.div`
   flex: 2;
   display: flex;
+
+  ${mobile({flexDirection:"column" , alignItems:"center"})}
 `;
 
 const Image = styled.img`
@@ -94,6 +96,7 @@ const Details = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  ${mobile({ textAlign:"center"})}
 `;
 
 const ProductName = styled.span``;
@@ -227,7 +230,7 @@ const Cart = () => {
       <Wrapper>
         <Title>YOUR BAG</Title>
         <Top>
-          <TopButton onClick={() => navigate("/")}>CONTINUE SHOPPING</TopButton>
+          <TopButton onClick={() => navigate("/")} type="filled">CONTINUE SHOPPING</TopButton>
           <TopTexts>
             <TopText>Shopping Bag ({cart.quantity})</TopText>
             {/* <TopText>Your Wishlist (0)</TopText> */}

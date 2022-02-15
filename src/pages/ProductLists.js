@@ -6,7 +6,7 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import Newsletter from "../components/Newsletter";
 import Products from "../components/Products";
-import { iPad, mobile } from "../responsive";
+import { iPad, mobile, mobileSm } from "../responsive";
 import {useLocation} from 'react-router-dom'
 
 const Container = styled.div`
@@ -16,12 +16,14 @@ const Container = styled.div`
 const FilterContainer = styled.div`
   display: flex;
   justify-content: space-between;
+
+  ${mobileSm({flexDirection:"column"})}
 `;
 
 const Filter = styled.div`
   margin: 40px 20px 0 50px;
-  ${mobile({ width: "0px 20px", display: "flex", flexDirection: "column" })}
-  ${iPad({ width: "0px 20px", display: "flex", flexDirection: "column" })}
+  ${mobile({ margin: "25px 20px", display: "flex", flexDirection: "column" })}
+  ${iPad({ margin: "25px 20px", display: "flex", flexDirection: "column" })}
 `;
 
 const FilterText = styled.span`

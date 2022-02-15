@@ -2,7 +2,7 @@ export const sliderItems = [
     {
       id: 1,
       img: "https://i.ibb.co/cXFnLLV/3.png",
-      title: "Fall - Winter Collections 2030",
+      title: "Fall - Winter Collections 2022",
       desc: "A specialist label creating luxury essentials. Ethically crafted with an unwavering commitment to exceptional quality.",
       bg: "f5fafd",
     },
