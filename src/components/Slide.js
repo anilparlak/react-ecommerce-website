@@ -120,7 +120,7 @@ const Slide = () => {
             <InfoContainer>
               <Title>{item.title}</Title>
               <Desc>{item.desc}</Desc>
-              <Button onClick={() => navigate("/products/")}>SHOP NOW</Button>
+              <Button onClick={() => navigate("/products/kids")}>SHOP NOW</Button>
             </InfoContainer>
           </Slider>
         ))}
