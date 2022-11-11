@@ -35,7 +35,7 @@ const LoginDropdown = styled.div`
     opacity: 0;
     position: absolute;
     left: calc((100% - 120px) / 2);
-    top: 50px;
+    top: 49px;
     z-index: 99;
     justify-content: center;
     -webkit-box-shadow: 2px 5px 13px -4px #000000; 

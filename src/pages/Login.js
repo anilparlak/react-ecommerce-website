@@ -1,9 +1,10 @@
 import { useState } from "react";
 import styled from "styled-components";
-import {mobile} from '../responsive';
-import {useDispatch,useSelector} from 'react-redux';
-import { login } from "../redux/apiCalls";
+import { mobile } from "../responsive";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { api } from "../api";
+import { loginFailure, loginStart, loginSuccess } from "../redux/userRedux";
 
 const Container = styled.div`
   width: 100vw;
@@ -45,19 +46,19 @@ const Input = styled.input`
   padding: 10px;
 `;
 
-const Button = styled.button`
+const Button = styled.div`
   width: 100%;
   border: none;
   padding: 15px 20px;
   background-color: #000;
   color: white;
   cursor: pointer;
-
+  text-align: center;
   margin: 10px 0;
-  transition: all .4s ease;
+  transition: all 0.4s ease;
 
-  &:hover{
-      background-color: #e53637;
+  &:hover {
+    background-color: #e53637;
   }
 `;
 
@@ -66,41 +67,56 @@ const Link = styled.a`
   font-size: 12px;
   text-decoration: underline;
   cursor: pointer;
-  transition: all .4s ease;
+  transition: all 0.4s ease;
   font-weight: 600;
 
-  &:hover{
-      color: #e53637;
+  &:hover {
+    color: #e53637;
   }
 `;
 const Error = styled.span`
   color: red;
 `;
 const Login = () => {
-
-  const [username,setUsername] = useState();
-  const [password,setPassword] = useState();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const { isFetching, error } = useSelector((state) => state.user);
   const navigate = useNavigate();
-  
-  const handleClick = (event) => {
-    event.preventDefault();
 
-    login(dispatch, { username, password });
-  }
+  const handleClick = async () => {
+    dispatch(loginStart());
+    try {
+      const response = await api().post("/auth/login", { username, password });
+      dispatch(loginSuccess(response.data));
+    } catch (err) {
+      dispatch(loginFailure());
+      console.log("error=>", err);
+    }
+  };
 
   return (
     <Container>
       <Wrapper>
         <Title>SIGN IN</Title>
         <Form>
-          <Input placeholder="Username" onChange={(e) => setUsername(e.target.value)} />
-          <Input placeholder="Password" type="password" onChange={(e) => setPassword(e.target.value)} />
-          <Button onClick={handleClick} disabled={isFetching}>LOGIN</Button>
-          {!error && <Error>Something went wrong...</Error>}
+          <Input
+            placeholder="Username"
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <Input
+            placeholder="Password"
+            type="password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <Button onClick={handleClick} disabled={isFetching}>
+            LOGIN
+          </Button>
+          {/* {error && <Error>Something went wrong...</Error>} */}
           <Link>DO NOT YOU REMEMBER THE PASSWORD?</Link>
-          <Link onClick={() => navigate("/register")}>CREATE A NEW ACCOUNT</Link>
+          <Link onClick={() => navigate("/register")}>
+            CREATE A NEW ACCOUNT
+          </Link>
         </Form>
       </Wrapper>
     </Container>

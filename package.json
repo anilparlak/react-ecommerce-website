@@ -45,11 +45,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ],
-    "plugins": ["babel-plugin-styled-components"]
+    "plugins": [
+      "babel-plugin-styled-components"
+    ]
   },
   "devDependencies": {
     "babel-plugin-styled-components": "^2.0.2"
-    
   }
-  
 }
